@@ -1,0 +1,11 @@
+version: '3'
+services:
+  sftp:
+    # image: atmoz/sftp
+    build: .
+    command: ole::::upload
+    volumes:
+    - /home/ole/.ssh/id_rsa.pub:/home/ole/.ssh/keys/id_rsa.pub:ro
+    - ./upload:/home/ole/upload
+    ports:
+    - "2222:22"
