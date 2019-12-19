@@ -1,0 +1,21 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        docker build -t eu.gcr.io/levelup-public/docker-sftp:${COMMIT_SHA} .
+        docker push eu.gcr.io/levelup-public/docker-sftp:${COMMIT_SHA}
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        docker build -t eu.gcr.io/levelup-public/docker-sftp:latest .
+        docker push eu.gcr.io/levelup-public/docker-sftp:latest
+
+
+images:
+  - 'eu.gcr.io/levelup-public/docker-sftp:${COMMIT_SHA}'
+  - 'eu.gcr.io/levelup-public/docker-sftp:latest'
+

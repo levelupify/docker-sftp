@@ -1,0 +1,26 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"*.sql",
+				"*.min.js",
+				"*.js.map"
+			],
+			"folder_exclude_patterns":
+			[
+				"node_modules",
+				"wp-includes",
+				"wp-admin",
+				"dist"
+			],
+			"path": ".."
+		}
+	],
+	"settings":
+	{
+		"tab_size": 2,
+		"translate_tabs_to_spaces": true
+	}
+}

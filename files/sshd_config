@@ -20,3 +20,9 @@ ChrootDirectory %h
 
 # Enable this for more logs
 #LogLevel VERBOSE
+
+# Disable password authentication
+PasswordAuthentication no
+
+# Change port
+Port 2222
