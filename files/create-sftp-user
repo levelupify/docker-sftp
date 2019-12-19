@@ -48,6 +48,17 @@ uid="${args[$((skipIndex+2))]}"; validateArg "UID" "$uid" "$reUid" || exit 1
 gid="${args[$((skipIndex+3))]}"; validateArg "GID" "$gid" "$reGid" || exit 1
 dir="${args[$((skipIndex+4))]}"; validateArg "dirs" "$dir" "$reDir" || exit 1
 
+# Always set permissions for the user folder
+chown root:root "/home/$user"
+chmod 755 "/home/$user"
+
+# Always set permissions for the .ssh repo and authorized_keys
+if [ -d "/home/$user/.ssh/keys" ]; then
+    chmod 600 "/home/$user/.ssh"
+    chown "$uid" "/home/$user/.ssh/authorized_keys"
+    chmod 600 "/home/$user/.ssh/authorized_keys"
+fi
+
 if getent passwd "$user" > /dev/null; then
     log "WARNING: User \"$user\" already exists. Skipping."
     exit 0
